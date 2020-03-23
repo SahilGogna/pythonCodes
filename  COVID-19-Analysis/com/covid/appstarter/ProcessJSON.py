@@ -10,16 +10,17 @@ class ProcessJSON:
         """reads country data from url and returns a dictonary with code and country as key and value"""
 
         countryData = self.reader.parseURL('https://pomber.github.io/covid19/countries.json')
-        countryNames = countryData.keys()
+        countryList = []
+        for key in countryData:
+            countryList.append(key.upper())
         countryCodes = countryData.values()
         codeList = []
-        countryList = [*countryNames]
         for value in countryCodes:
             codeList.append(value.get("code"))
         countryDict = dict(zip(codeList, countryList))
         return countryDict
 
-    def getCasesByCountry(self):
+    def getCasesPerCountry(self):
         """reads data per country and returns a dictionary of country against list of daily data"""
 
         casesByCounties = self.reader.parseURL('https://pomber.github.io/covid19/timeseries.json')
@@ -33,5 +34,9 @@ class ProcessJSON:
                 recovered = casesPerDay.get("recovered")
                 listOFCases.append(CaseDetails(date, confirmed, deaths, recovered))
 
-            countryAndCaseDict[countryName] = listOFCases
+            countryUpperCase = countryName.upper()
+            countryAndCaseDict[countryUpperCase] = listOFCases
         return countryAndCaseDict
+
+    def getCasesByCountryName(self, country):
+        return self.getCasesPerCountry().get(country)
