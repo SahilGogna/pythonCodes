@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b0b43174-cbc3-482e-bd22-bdbb10921e15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/covid/DataPlotting/DataPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/covid/DataPlotting/DataPlotter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/covid/DataProcessing/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/covid/DataProcessing/Statistics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/covid/appstarter/EntryPoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/covid/appstarter/EntryPoint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/covid/appstarter/ProcessJSON.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/covid/appstarter/ProcessJSON.py" afterDir="false" />
     </list>
@@ -129,7 +131,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

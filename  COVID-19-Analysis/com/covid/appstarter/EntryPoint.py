@@ -9,4 +9,4 @@ for code, country in countryData.items():
     print(code, "->", country)
 var = raw_input("Enter the country code -> ")
 dataPlotter = DataPlotter()
-dataPlotter.plotBarChart(countryData.get(var.upper()))
+dataPlotter.plotPieChart(countryData.get(var.upper()))

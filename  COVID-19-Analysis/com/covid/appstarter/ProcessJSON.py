@@ -37,6 +37,3 @@ class ProcessJSON:
             countryUpperCase = countryName.upper()
             countryAndCaseDict[countryUpperCase] = listOFCases
         return countryAndCaseDict
-
-    def getCasesByCountryName(self, country):
-        return self.getCasesPerCountry().get(country)
