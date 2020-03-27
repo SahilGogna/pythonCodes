@@ -3,7 +3,7 @@ from com.covid.jsonreader.JsonReader import URLReader
 
 
 class ProcessJSON:
-    'reads data from url and transform into desired forms'
+    """reads data from url and transform into desired forms"""
     reader = URLReader()
 
     def getCountryData(self):
