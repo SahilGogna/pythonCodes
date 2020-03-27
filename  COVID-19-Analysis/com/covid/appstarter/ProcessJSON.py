@@ -6,7 +6,7 @@ class ProcessJSON:
     """reads data from url and transform into desired forms"""
     reader = URLReader()
 
-    def getCountryData(self):
+    def getAllCountries(self):
         """reads country data from url and returns a dictonary with code and country as key and value"""
 
         countryData = self.reader.parseURL('https://pomber.github.io/covid19/countries.json')

@@ -1,11 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from numpy.core.tests.test_einsum import sizes
 
 from com.covid.DataProcessing.Statistics import Statistics
+from com.covid.appstarter.ProcessJSON import ProcessJSON
 
 
 class DataPlotter:
-    data = Statistics()
+    readDataFromJSON = ProcessJSON()
+    caseData = readDataFromJSON.getCasesPerCountry()
+    data = Statistics(caseData)
 
     def plotBarChart(self, country):
         confirmedList = self.data.getConfirmedCasesPerDayByCountry(country)
@@ -22,6 +26,9 @@ class DataPlotter:
 
     def plotPieChart(self, caseList, title):
         headings = ["Confirmed", "Deaths", "Recovered"]
+
+        def absolute_value(val):
+            return val
 
         plt.pie(caseList,
                 labels=headings,

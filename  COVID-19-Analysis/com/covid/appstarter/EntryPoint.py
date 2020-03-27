@@ -1,12 +1,7 @@
-from pip._vendor.distlib.compat import raw_input
-
 from com.covid.DataPlotting.DataPlotter import DataPlotter
 from com.covid.appstarter.ProcessJSON import ProcessJSON
 
 obj = ProcessJSON()
-countryData = obj.getCountryData()
-for code, country in countryData.items():
-    print(code, "->", country)
-var = raw_input("Enter the country code -> ")
+data = obj.getCasesPerCountry()
 dataPlotter = DataPlotter()
-dataPlotter.plotPieChart(countryData.get(var.upper()))
+dataPlotter.plotWorldPieChart()

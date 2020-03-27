@@ -4,9 +4,12 @@ from com.covid.appstarter.ProcessJSON import ProcessJSON
 class Statistics:
     obj = ProcessJSON()
 
+    def __init__(self, data):
+        self.data = data
+
     def getCasesByCountryName(self, country):
         countryUpperCase = country.upper()
-        return self.obj.getCasesPerCountry().get(countryUpperCase)
+        return self.data.get(countryUpperCase)
 
     def getTotalDaysOfAvailableData(self, country):
         dayCounter = 0
@@ -18,7 +21,8 @@ class Statistics:
 
     def getConfirmedCasesPerDayByCountry(self, country):
         confirmed = []
-        for value in self.getCasesByCountryName(country):
+        values = self.getCasesByCountryName(country)
+        for value in values:
             confirmed.append(value.confirmed)
         return confirmed
 
@@ -35,13 +39,44 @@ class Statistics:
         return recovered
 
     def getTotalConfirmedByCountry(self, country):
-        return self.getConfirmedCasesPerDayByCountry(country)[-1]
+        finalList = self.getConfirmedCasesPerDayByCountry(country)
+        returnValue = 0
+        if len(finalList) != 0:
+            returnValue = finalList[-1]
+        return returnValue
 
     def getTotalDeathsByCountry(self, country):
-        return self.getDeadCasesPerDayByCountry(country)[-1]
+        finalList = self.getDeadCasesPerDayByCountry(country)
+        returnValue = 0
+        if len(finalList) != 0:
+            returnValue = finalList[-1]
+        return returnValue
 
     def getTotalRecoveredByCountry(self, country):
-        return self.getRecoveredCasesPerDayByCountry(country)[-1]
+        finalList = self.getRecoveredCasesPerDayByCountry(country)
+        returnValue = 0
+        if len(finalList) != 0:
+            returnValue = finalList[-1]
+        return returnValue
+
+    def getWorldTotalConfirmed(self):
+        total = 0
+        for country in self.data.keys():
+            total = total + self.getTotalConfirmedByCountry(country.upper())
+        return total
+
+    def getWorldTotalRecovered(self):
+        total = 0
+        for country in self.data.keys():
+            if self.getTotalRecoveredByCountry(country.upper()) is not None:
+                total = total + self.getTotalRecoveredByCountry(country.upper())
+        return total
+
+    def getWorldTotalDeaths(self):
+        total = 0
+        for country in self.data.keys():
+            total = total + self.getTotalDeathsByCountry(country.upper())
+        return total
 
     # this method would have been useful if data was provided for per day
     # def getTotalDetailsByCountry(self):
